@@ -1,0 +1,112 @@
+2020-02-26 21:29:06 INFO  - DAO initialized
+2020-02-26 21:29:13 INFO  - MNN-971 was specified as racecar
+2020-02-26 21:29:34 INFO  - MNN-971 was specified as racecar
+2020-03-02 12:01:05 INFO  - DAO initialized
+2020-03-02 12:01:05 ERROR - IOException occured
+2020-03-02 12:06:53 INFO  - DAO initialized
+2020-03-02 12:09:28 INFO  - DAO initialized
+2020-03-02 12:11:25 INFO  - DAO initialized
+2020-03-02 12:14:07 INFO  - DAO initialized
+2020-03-02 12:17:53 INFO  - DAO initialized
+2020-03-02 12:17:54 INFO  - NSR-107 was returned
+2020-03-02 12:23:22 INFO  - DAO initialized
+2020-03-02 12:23:23 INFO  - NSR-107 was returned
+2020-03-02 12:24:49 INFO  - DAO initialized
+2020-03-02 12:24:49 INFO  - NSR-107 was returned
+2020-03-02 12:29:41 INFO  - DAO initialized
+2020-03-02 12:29:50 INFO  - DAO initialized
+2020-03-02 12:30:50 INFO  - DAO initialized
+2020-03-02 12:30:58 INFO  - DAO initialized
+2020-03-02 12:35:18 INFO  - DAO initialized
+2020-03-02 12:38:25 INFO  - DAO initialized
+2020-03-02 12:38:26 ERROR - IOException occured
+2020-03-02 12:40:48 INFO  - DAO initialized
+2020-03-02 12:42:17 INFO  - DAO initialized
+2020-03-02 12:42:17 INFO  - NSR-107 was returned
+2020-03-02 12:43:22 INFO  - DAO initialized
+2020-03-02 12:48:00 INFO  - DAO initialized
+2020-03-02 12:48:07 INFO  - NSR-107 was returned
+2020-03-02 12:55:48 INFO  - NSR-107 was returned
+2020-03-02 12:57:44 INFO  - NSR-107 was returned
+2020-03-02 12:57:45 INFO  - NSR-107 was returned
+2020-03-02 13:01:00 INFO  - NSR-107 was returned
+2020-03-02 13:01:18 INFO  - NSR-107 was returned
+2020-03-02 13:01:43 INFO  - NSR-107 was returned
+2020-03-02 13:02:15 INFO  - NSR-107 was returned
+2020-03-02 13:02:54 INFO  - NSR-107 was returned
+2020-03-02 13:02:55 INFO  - NSR-107 was returned
+2020-03-02 13:04:13 INFO  - NSR-107 was returned
+2020-03-02 13:04:36 INFO  - NSR-107 was returned
+2020-03-02 13:05:02 INFO  - NSR-107 was returned
+2020-03-02 13:05:58 INFO  - NSR-107 was returned
+2020-03-02 13:06:12 INFO  - NSR-107 was returned
+2020-03-02 13:06:53 INFO  - NSR-107 was returned
+2020-03-03 10:08:21 INFO  - DAO initialized
+2020-03-03 10:08:22 INFO  - NSR-107 was returned
+2020-03-03 10:16:08 INFO  - DAO initialized
+2020-03-03 10:16:08 INFO  - NSR-107 was returned
+2020-03-03 10:17:43 INFO  - DAO initialized
+2020-03-03 10:17:43 INFO  - NSR-107 was returned
+2020-03-03 10:18:30 INFO  - DAO initialized
+2020-03-03 10:18:31 INFO  - NSR-107 was returned
+2020-03-03 10:18:46 INFO  - DAO initialized
+2020-03-03 10:18:46 INFO  - NSR-107 was returned
+2020-03-03 10:58:09 INFO  - DAO initialized
+2020-03-03 10:58:25 ERROR - NSR-106 was not found in the database
+2020-03-04 18:48:33 INFO  - DAO initialized
+2020-03-05 14:17:17 INFO  - DAO initialized
+2020-03-05 14:17:18 INFO  - NSR-107 was returned
+2020-03-05 14:17:40 INFO  - DAO initialized
+2020-03-05 14:17:40 INFO  - NSR-107 was returned
+2020-03-05 14:19:10 INFO  - DAO initialized
+2020-03-05 14:19:10 INFO  - NSR-107 was returned
+2020-03-05 14:27:37 INFO  - DAO initialized
+2020-03-05 14:27:38 INFO  - NSR-107 was returned
+2020-03-05 14:30:08 INFO  - DAO initialized
+2020-03-05 14:30:08 INFO  - NSR-107 was returned
+2020-03-05 14:30:38 INFO  - DAO initialized
+2020-03-05 14:30:39 INFO  - NSR-107 was returned
+2020-03-07 19:18:05 INFO  - DAO initialized
+2020-03-07 19:18:05 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:18:58 INFO  - DAO initialized
+2020-03-07 19:19:16 INFO  - DAO initialized
+2020-03-07 19:19:37 INFO  - DAO initialized
+2020-03-07 19:19:37 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:24:23 INFO  - DAO initialized
+2020-03-07 19:24:23 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:25:09 INFO  - DAO initialized
+2020-03-07 19:25:09 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:25:54 INFO  - DAO initialized
+2020-03-07 19:25:54 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:28:41 INFO  - DAO initialized
+2020-03-07 19:28:41 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:29:24 INFO  - DAO initialized
+2020-03-07 19:29:24 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:29:35 INFO  - DAO initialized
+2020-03-07 19:29:35 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:30:10 INFO  - DAO initialized
+2020-03-07 19:30:10 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:30:54 INFO  - DAO initialized
+2020-03-07 19:30:54 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:32:18 INFO  - DAO initialized
+2020-03-07 19:32:18 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:32:53 INFO  - DAO initialized
+2020-03-07 19:32:53 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:34:09 INFO  - DAO initialized
+2020-03-07 19:34:09 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:34:48 INFO  - DAO initialized
+2020-03-07 19:34:48 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:35:37 INFO  - DAO initialized
+2020-03-07 19:35:37 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:36:08 INFO  - DAO initialized
+2020-03-07 19:36:08 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:36:47 INFO  - DAO initialized
+2020-03-07 19:36:47 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:37:35 INFO  - DAO initialized
+2020-03-07 19:37:35 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:39:52 INFO  - DAO initialized
+2020-03-07 19:39:52 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:40:48 INFO  - DAO initialized
+2020-03-07 19:40:48 INFO  - New car was inserted with a title MNS-128
+2020-03-07 19:48:10 INFO  - DAO initialized
+2020-03-07 19:48:10 INFO  - New car was inserted with a title MNS-128
