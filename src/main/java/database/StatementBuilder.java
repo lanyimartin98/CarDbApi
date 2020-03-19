@@ -27,5 +27,27 @@ public class StatementBuilder {
         builder.append("\""+database+"\";");
         return builder.toString();
     }
+    public static String BuildSingleSelect(String database, String identifier, String id){
+        StringBuilder builder=new StringBuilder();
+        builder.append("select * from \"");
+        builder.append(database);
+        builder.append("\" where \"");
+        builder.append(identifier);
+        builder.append("\"=\'");
+        builder.append(id);
+        builder.append("\';");
+        return builder.toString();
+    }
+    public static String BuildDelete(String database,String identifier,String id){
+        StringBuilder builder=new StringBuilder();
+        builder.append("delete from \"");
+        builder.append(database);
+        builder.append("\" where \"");
+        builder.append(identifier);
+        builder.append("\"=\'");
+        builder.append(id);
+        builder.append("\';");
+        return builder.toString();
+    }
 
 }

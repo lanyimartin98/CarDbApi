@@ -1,5 +1,7 @@
 package database;
 
+import exceptions.AnotherFound;
+import exceptions.NotFound;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -7,10 +9,10 @@ import java.util.ArrayList;
 class StatementBuilderTest {
 
     @Test
-    void builtQuery() {
+    void builtQuery() throws NotFound, AnotherFound {
         StatementBuilder builder=new StatementBuilder();
         System.out.println(builder.BuildQuery("Cars"));
-        System.out.println(Connector.execStatement(builder.BuildQuery("Cars")));
+        System.out.println(Connector.execQuery(builder.BuildQuery("Cars")));
     }
     @Test
     void buildAdd(){
@@ -21,5 +23,13 @@ class StatementBuilderTest {
         ob.add("String");
         StatementBuilder builder=new StatementBuilder();
         System.out.println(builder.BuildInsert("Cars",ob));
+    }
+    @Test
+    void TestSingleSelect(){
+        System.out.println(StatementBuilder.BuildSingleSelect("Cars","title","NSR-107"));
+    }
+    @Test
+    void buildDelete(){
+        System.out.println(StatementBuilder.BuildDelete("Cars","title","NSR-107"));
     }
 }

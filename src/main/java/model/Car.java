@@ -141,18 +141,18 @@ public class Car {
         this.picture = picture;
     }
 
-    public Car(String make, String model, String owner_id, String title, LocalDate startOfUse, double horsePower, inUse inUse, boolean underCustody, usageType usageType, int milage, String picture) {
-        this.title = title;
-        this.make = make;
-        this.model = model;
-        this.owner_id=owner_id;
-        this.start_of_use = startOfUse;
+    public Car(String make, String model, String owner_id, String title, LocalDate startOfUse, double horsePower, inUse inUse, boolean underCustody, usageType usageType, int milage, String picture) throws InvalidData, MilageCanNotBeLowered {
+        this.setTitle(title);
+        this.setMake(make);
+        this.setModel(model);
+        this.setOwner_id(owner_id);
+        this.setStart_of_use(startOfUse);
         this.horsepower = horsePower;
         this.usage_type = usageType.racecar;
         this.in_use = inUse;
         this.under_custody = underCustody;
-        this.mileage =milage;
-        this.picture=picture;
+        this.setMileage(milage);
+        this.setPicture(picture);
         logger.info("New car was inserted with a title "+title);
     }
 
@@ -161,19 +161,19 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{" +
-                "make='" + make + '\'' +
-                ", model='" + model + '\'' +
-                ", title='" + title + '\'' +
-                ", startOfUse=" + start_of_use +
-                ", horsePower=" + horsepower +
-                ", inUse=" + in_use +
-                ", underCastody=" + under_custody +
-                ", usageType=" + usage_type +
-                ", mileage=" + mileage +
-                ", picture=" + picture +
-                ",owner_id="+ owner_id+
-                '}';
+        return "{" +
+                "\"make\":\"" + make + '\"' +
+                ", \"model\":\"" + model + '\"' +
+                ", \"title\":\"" + title + '\"' +
+                ", \"start_of_use\":\"" + start_of_use + '\"' +
+                ", \"horsepower\":\"" + horsepower + '\"' +
+                ", \"in_use\":\"" + in_use + '\"' +
+                ", \"under_custody\":\"" + under_custody + '\"' +
+                ", \"usage_type\":\"" + usage_type + '\"' +
+                ", \"mileage\":\"" + mileage + '\"' +
+                ", \"picture\":\"" + picture + '\"' +
+                ", \"owner_id\":\""+ owner_id+ '\"' +
+                "}";
     }
 
     @Override

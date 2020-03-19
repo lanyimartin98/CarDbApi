@@ -1,5 +1,7 @@
 package database;
 
+import exceptions.AnotherFound;
+import exceptions.NotFound;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
@@ -13,9 +15,9 @@ class ConnectorTest {
     }
 
     @Test
-    void getConnection() throws SQLException {
-        String sql="select * from \"Cars\";";
-        System.out.println(Connector.execStatement(sql));
+    void getConnection() throws SQLException, NotFound, AnotherFound {
+        String sql=StatementBuilder.BuildSingleSelect("Cars","title","MNN-207");
+        System.out.println(Connector.execQuery(sql));
 
     }
 }

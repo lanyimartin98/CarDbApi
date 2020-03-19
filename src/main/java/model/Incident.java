@@ -51,13 +51,14 @@ public class Incident {
     public void setTitle(String title) {
         this.title = title;
     }
+    public Incident(){};
 
     public Incident(int incident_id, LocalDate inc_date, boolean outcome, incidentType inc_type, String title) {
-        this.incident_id = incident_id;
-        this.inc_date = inc_date;
-        this.outcome = outcome;
-        this.inc_type = inc_type;
-        this.title = title;
+        this.setIncident_id(incident_id);
+        this.setInc_date(inc_date);
+        this.setOutcome(outcome);
+        this.setInc_type(inc_type);
+        this.setTitle(title);
     }
 
     @Override
@@ -79,12 +80,12 @@ public class Incident {
 
     @Override
     public String toString() {
-        return "Incident{" +
-                "incident_id=" + incident_id +
-                ", inc_date=" + inc_date +
-                ", outcome=" + outcome +
-                ", inc_type=" + inc_type +
-                ", title='" + title + '\'' +
+        return "{" +
+                "\"incident_id\":\"" + incident_id + '\"' +
+                ", \"inc_date\":\"" + inc_date + '\"' +
+                ", \"outcome\":\"" + outcome + '\"' +
+                ", \"inc_type\":\"" + inc_type + '\"' +
+                ", \"title\":\"" + title + '\"' +
                 '}';
     }
 }

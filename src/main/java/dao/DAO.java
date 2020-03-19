@@ -1,81 +1,74 @@
 package dao;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import database.Connector;
+import database.StatementBuilder;
 import exceptions.AnotherFound;
 import exceptions.NotFound;
-import model.Car;
 import org.apache.log4j.Logger;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 
 public  class DAO implements IDAO {
 
-    private ObjectMapper mapper;
-    private TypeReference listReference;
-    private String stm;
+
+    private String database;
+    private String identifier;
 
     private Logger logger=Logger.getLogger(DAO.class);
 
-    public DAO(TypeReference referencedType,String stm) {
 
-        this.mapper = new ObjectMapper();
-        this.mapper.registerModule(new JavaTimeModule());
-        this.listReference = referencedType;
-        this.stm=stm;
+    public DAO(String database, String identifier) {
+
+        this.identifier=identifier;
+        this.database=database;
+
+
         logger.info("DAO initialized");
     }
-    public Collection<Car> getAllData(){
-        Collection<Car> result = new ArrayList();
-        try {
-            result = mapper.readValue(Connector.execStatement(stm).toString(), listReference);
-        } catch (JsonParseException e) {
-            logger.error("JSONException occured");
-            e.printStackTrace();
-
-        }catch (IOException e) {
-            logger.error("IOException occured");
-            e.printStackTrace();
-        }
-        return result;
+    public JSONArray getAllData() throws NotFound, AnotherFound {
+        return Connector.execQuery(StatementBuilder.BuildQuery(database));
     }
 
     @Override
     public void deleteByID(String id) {
+        try{
+            Connector.execDelete(StatementBuilder.BuildDelete(database,identifier,id));
+        } catch (AnotherFound | NotFound notFound) {
+            System.out.println("Got that too");
+        }
+    }
 
+
+    @Override
+    public void addData(ArrayList data) throws AnotherFound, NotFound {
+        System.out.println(StatementBuilder.BuildInsert(database,data));
+        try {
+            Connector.execInsert(StatementBuilder.BuildInsert(database, data));
+        }catch(AnotherFound ex){
+            System.out.println("Found that");
+        }
     }
 
     @Override
-    public void addData(Object data) throws AnotherFound, NotFound {
+    public JSONObject getDataByID(String title) throws NotFound {
+        try {
+            return Connector.execQuery(StatementBuilder.BuildSingleSelect(database, identifier, title)).getJSONObject(0);
 
+        } catch (AnotherFound anotherFound) {
 
-    }
+        } catch (JSONException e) {
 
-
-
-    public Car getDataByID(String title) throws NotFound {
-        Collection<Car> cars = this.getAllData();
-
-
-            for (Car c : cars) {
-                if (c.getTitle().equalsIgnoreCase(title)) {
-                    logger.info(c.getTitle() + " was returned");
-                    return c;
-
-                }
-            }
-
-            logger.error(title + " was not found in the database");
-            throw new NotFound(title);
-
-
+        } catch (NotFound e) {
+            System.out.println("Gooooot that");
         }
+        throw new NullPointerException();
     }
+
+    }
+
 
 
 

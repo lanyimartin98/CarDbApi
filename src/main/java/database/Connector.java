@@ -1,8 +1,11 @@
 package database;
 
+import exceptions.AnotherFound;
+import exceptions.NotFound;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.sql.*;
 
@@ -32,12 +35,38 @@ public class Connector {
         }
         return null;
     }
+    public static void execInsert(String SQL) throws AnotherFound, NotFound {
+        con = Connector.getConnection();
+        try (
 
-    public static JSONArray execStatement(String SQL) {
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(SQL)) {
+        } catch (SQLException ex) {
+            if(ex.getSQLState().equals("23505")){
+                throw new AnotherFound();
+            }
+
+        }
+    }
+    public static void execDelete(String SQL) throws AnotherFound, NotFound {
+        con = Connector.getConnection();
+        try (
+
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(SQL)) {
+        } catch (SQLException ex) {
+            if(ex.getSQLState().equals("02000")){
+                throw new AnotherFound();
+            }
+
+        }
+    }
+
+        public static JSONArray execQuery(String SQL) throws NotFound, AnotherFound {
 
         con=Connector.getConnection();
         JSONArray arr=new JSONArray();
-        JSONObject obj=new JSONObject();
+
 
         try (
 
@@ -47,7 +76,11 @@ public class Connector {
                 ResultSet rs = stmt.executeQuery(SQL)) {
             ResultSetMetaData metadata = rs.getMetaData();
             int columnCount = metadata.getColumnCount();
-            while(rs.next()){
+            int size = rs.getRow();
+
+            while (rs.next()) {
+
+                JSONObject obj = new JSONObject();
 
                 for (int i = 0; i < columnCount; i++) {
 
@@ -57,14 +90,20 @@ public class Connector {
                 }
                 arr.put(obj);
 
-            }
-            return arr;
 
-        } catch (SQLException | JSONException ex) {
-            System.out.println(ex.getMessage());
-            return null;
+            }
+            if (arr.toString().equals("[]")) {
+                throw new NotFound();
+            } else {
+                return arr;
+            }
+
+
+        } catch (SQLException | JSONException e) {
+            e.printStackTrace();
         }
 
+            throw new NotFound();
 
     }
 

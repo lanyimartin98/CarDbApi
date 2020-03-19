@@ -56,11 +56,11 @@ public class Owner {
     }
     public Owner(){};
     public Owner(String id, String name, LocalDate date_of_birth, boolean underarrest, String picture) {
-        this.id = id;
-        this.name = name;
-        this.date_of_birth = date_of_birth;
-        this.underarrest = underarrest;
-        this.picture = picture;
+        this.setId(id);
+        this.setName(name);
+        this.setDate_of_birth(date_of_birth);
+        this.setUnderarrest(underarrest);
+        this.setPicture(picture);
     }
 
     @Override
