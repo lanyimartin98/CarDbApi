@@ -14,4 +14,5 @@ public interface IDAO<T> {
     JSONObject getDataByID(java.lang.String id) throws NotFound;
     JSONArray getAllData() throws NotFound, AnotherFound;
     void deleteByID(java.lang.String id);
+    void updateData(ArrayList<String> data, String id);
 }

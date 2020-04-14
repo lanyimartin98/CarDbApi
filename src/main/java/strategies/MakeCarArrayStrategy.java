@@ -22,4 +22,16 @@ public class MakeCarArrayStrategy extends MakeArrayStrategy {
         car.add(addingCar.getPicture());
         return car;
     }
+
+    @Override
+    public ArrayList<String> MakeUpdate(Object data) {
+        Car updateCar=(Car)data;
+        ArrayList<String> car=new ArrayList<>();
+        car.add("\"horsepower\"=\'"+updateCar.getHorsepower()+"\'");
+        car.add("\"usage_type\"=\'"+updateCar.getUsage_type().ordinal()+"\'");
+        car.add("\"in_use\"=\'"+updateCar.getIn_use().ordinal()+"\'");
+        car.add("\"under_custody\"=\'"+updateCar.isUnder_custody()+"\'");
+        car.add("\"picture\"=\'"+updateCar.getPicture()+"\'");
+        return car;
+    }
 }

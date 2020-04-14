@@ -9,6 +9,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import javax.swing.plaf.nimbus.State;
+import java.sql.Connection;
 import java.util.ArrayList;
 
 public  class DAO implements IDAO {
@@ -41,10 +43,21 @@ public  class DAO implements IDAO {
         }
     }
 
+    @Override
+    public void updateData(ArrayList data, String id) {
+        try{
+            System.out.println(StatementBuilder.BuildUpdate(database,identifier,id,data));
+            Connector.execUpdate(StatementBuilder.BuildUpdate(database,identifier,id,data));
+
+        }
+        catch(Exception e){
+
+        }
+    }
+
 
     @Override
     public void addData(ArrayList data) throws AnotherFound, NotFound {
-        System.out.println(StatementBuilder.BuildInsert(database,data));
         try {
             Connector.execInsert(StatementBuilder.BuildInsert(database, data));
         }catch(AnotherFound ex){

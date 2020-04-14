@@ -3,7 +3,6 @@ package database;
 import java.util.ArrayList;
 
 public class StatementBuilder {
-    public StatementBuilder(){};
     public static String BuildInsert(String database, ArrayList<Object> c ){
         StringBuilder builder=new StringBuilder();
         builder.append("insert into \"");
@@ -17,7 +16,6 @@ public class StatementBuilder {
                 builder.append("\'"+c.get(i).toString()+"\'");
             }
         }
-
         builder.append(");");
         return builder.toString();
     }
@@ -48,6 +46,28 @@ public class StatementBuilder {
         builder.append(id);
         builder.append("\';");
         return builder.toString();
+    }
+
+    public static String BuildUpdate(String database, String identifier,String id, ArrayList<String> arr){
+        StringBuilder builder=new StringBuilder();
+        builder.append("update \"");
+        builder.append(database);
+        builder.append("\" set ");
+        for (int i = 0; i < arr.size(); i++) {
+            if(i<arr.size()-1) {
+                builder.append(arr.get(i) + ", ");
+            }
+            else{
+                builder.append(arr.get(i));
+            }
+        }
+        builder.append(" where \"");
+        builder.append(identifier);
+        builder.append("\"=\'");
+        builder.append(id);
+        builder.append("\';");
+        return builder.toString();
+
     }
 
 }

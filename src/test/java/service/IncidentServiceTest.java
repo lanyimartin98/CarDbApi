@@ -1,6 +1,7 @@
 package service;
 
 import exceptions.AnotherFound;
+import exceptions.InvalidData;
 import exceptions.NotFound;
 import model.Incident;
 import model.enums.incidentType;
@@ -26,9 +27,9 @@ class IncidentServiceTest {
     }
 
     @Test
-    void addData() throws AnotherFound, IOException, NotFound {
+    void addData() throws AnotherFound, IOException, NotFound, InvalidData {
         IncidentService serv=new IncidentService();
-        Incident inc=new Incident(1, LocalDate.of(1998,10,22),false, incidentType.inspection,"NSR-107");
+        Incident inc=new Incident(2,LocalDate.of(1998,10,22),false, incidentType.inspection,"NSR-107");
         serv.addData(inc.toString());
     }
 

@@ -18,4 +18,9 @@ public class MakeIncidentArrayStrategy extends MakeArrayStrategy {
 
         return incidentArr;
     }
+
+    @Override
+    public ArrayList<String> MakeUpdate(Object data) {
+        return null;
+    }
 }

@@ -34,6 +34,12 @@ public class WebController {
         carService.deleteDataByTitle(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/carmodify/{title}")
+    public Car updateCar(@PathVariable String title) throws NotFound, IOException {
+        return carService.getDataByTitle(title);
+    }
+
 
 
 }

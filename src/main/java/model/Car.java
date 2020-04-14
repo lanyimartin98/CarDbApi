@@ -6,14 +6,11 @@ import model.enums.inUse;
 import model.enums.usageType;
 import org.apache.log4j.Logger;
 
+import java.security.InvalidAlgorithmParameterException;
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class Car {
-
-    public Car(){
-
-    }
 
     private String make;
     private String model;
@@ -75,7 +72,11 @@ public class Car {
         return horsepower;
     }
 
-    public void setHorsepower(double horsepower){
+    public void setHorsepower(double horsepower) throws InvalidAlgorithmParameterException {
+
+        if(horsepower<1){
+            throw new InvalidAlgorithmParameterException();
+        }
 
         if(horsepower >1000){
             this.usage_type = usage_type.racecar;
@@ -130,7 +131,11 @@ public class Car {
         return owner_id;
     }
 
-    public void setOwner_id(String owner_id) {
+    public void setOwner_id(String owner_id) throws InvalidData {
+        if(!owner_id.matches("[0-9][0-9][0-9][0-9][0-9][0-9][A-Z][A-Z]")) {
+            logger.error("ID did not match the patern");
+            throw new InvalidData("Invalid data");
+        }
         this.owner_id = owner_id;
     }
     public String getPicture() {
@@ -141,6 +146,9 @@ public class Car {
         this.picture = picture;
     }
 
+    public Car(){
+
+    }
     public Car(String make, String model, String owner_id, String title, LocalDate startOfUse, double horsePower, inUse inUse, boolean underCustody, usageType usageType, int milage, String picture) throws InvalidData, MilageCanNotBeLowered {
         this.setTitle(title);
         this.setMake(make);
@@ -153,11 +161,8 @@ public class Car {
         this.under_custody = underCustody;
         this.setMileage(milage);
         this.setPicture(picture);
-        logger.info("New car was inserted with a title "+title);
+        logger.info("Instance of car made with the title:"+title);
     }
-
-
-
 
     @Override
     public String toString() {

@@ -53,5 +53,9 @@ public class CarService {
     public void addData(String obj) throws IOException, NotFound, AnotherFound {
         carDAO.addData(as.MakeArray(mapper.readValue(obj.toString(),Car.class)));
     }
+    public void updateCar(String obj) throws IOException {
+        Car car=mapper.readValue(obj.toString(),Car.class);
+        carDAO.updateData(as.MakeUpdate(car),car.getTitle());
+    }
 
 }

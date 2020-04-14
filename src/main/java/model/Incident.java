@@ -1,7 +1,10 @@
 package model;
 
+import exceptions.InvalidData;
 import model.enums.incidentType;
+import org.apache.log4j.Logger;
 
+import java.security.InvalidAlgorithmParameterException;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -11,20 +14,21 @@ public class Incident {
     private boolean outcome;
     private incidentType inc_type;
     private String title;
+    private Logger logger=Logger.getLogger(Incident.class);
 
     public int getIncident_id() {
         return incident_id;
-    }
-
-    public void setIncident_id(int incident_id) {
-        this.incident_id = incident_id;
     }
 
     public LocalDate getInc_date() {
         return inc_date;
     }
 
-    public void setInc_date(LocalDate inc_date) {
+    public void setInc_date(LocalDate inc_date) throws InvalidData {
+        if(inc_date.isAfter(LocalDate.now())){
+            logger.error("Date can not be after today");
+            throw new InvalidData("Date can not be after today");
+        }
         this.inc_date = inc_date;
     }
 
@@ -48,17 +52,22 @@ public class Incident {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(String title) throws InvalidData {
+        if(!title.matches("[A-Z][A-Z][A-Z]-[0-9][0-9][0-9]")){
+            logger.error("Title does not match default format");
+            throw new InvalidData("The format is not correct!");
+        }
         this.title = title;
     }
-    public Incident(){};
 
-    public Incident(int incident_id, LocalDate inc_date, boolean outcome, incidentType inc_type, String title) {
-        this.setIncident_id(incident_id);
+    public Incident(){};
+    public Incident(int incident_id, LocalDate inc_date, boolean outcome, incidentType inc_type, String title) throws InvalidData {
+        this.incident_id=incident_id;
         this.setInc_date(inc_date);
         this.setOutcome(outcome);
         this.setInc_type(inc_type);
         this.setTitle(title);
+        logger.info("New instance made under the ID of:"+this.incident_id);
     }
 
     @Override

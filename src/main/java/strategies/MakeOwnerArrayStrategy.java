@@ -16,4 +16,9 @@ public class MakeOwnerArrayStrategy extends MakeArrayStrategy {
         arr.add(owner.getPicture());
         return arr;
     }
+
+    @Override
+    public ArrayList<String> MakeUpdate(Object data) {
+        return null;
+    }
 }

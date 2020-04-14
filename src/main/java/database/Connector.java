@@ -1,5 +1,6 @@
 package database;
 
+import benchmark.Bench;
 import exceptions.AnotherFound;
 import exceptions.NotFound;
 import org.json.JSONArray;
@@ -13,6 +14,7 @@ public class Connector {
     private Connector() {
     };
     private static Connection con = null;
+
 
 
 
@@ -36,8 +38,10 @@ public class Connector {
         return null;
     }
     public static void execInsert(String SQL) throws AnotherFound, NotFound {
+
         con = Connector.getConnection();
         try (
+
 
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery(SQL)) {
@@ -47,8 +51,22 @@ public class Connector {
             }
 
         }
+
     }
+    public static void execUpdate(String SQL){
+        con=Connector.getConnection();
+        try (
+
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(SQL)) {
+        } catch (SQLException ex) {
+
+            }
+
+        }
+
     public static void execDelete(String SQL) throws AnotherFound, NotFound {
+
         con = Connector.getConnection();
         try (
 
@@ -60,6 +78,7 @@ public class Connector {
             }
 
         }
+
     }
 
         public static JSONArray execQuery(String SQL) throws NotFound, AnotherFound {
@@ -69,10 +88,7 @@ public class Connector {
 
 
         try (
-
                 Statement stmt = con.createStatement();
-
-
                 ResultSet rs = stmt.executeQuery(SQL)) {
             ResultSetMetaData metadata = rs.getMetaData();
             int columnCount = metadata.getColumnCount();
@@ -93,8 +109,10 @@ public class Connector {
 
             }
             if (arr.toString().equals("[]")) {
+
                 throw new NotFound();
             } else {
+
                 return arr;
             }
 

@@ -16,8 +16,11 @@ class ConnectorTest {
 
     @Test
     void getConnection() throws SQLException, NotFound, AnotherFound {
-        String sql=StatementBuilder.BuildSingleSelect("Cars","title","MNN-207");
-        System.out.println(Connector.execQuery(sql));
+        double start=System.nanoTime();
+        String sql=StatementBuilder.BuildQuery("Cars");
+        Connector.execQuery(sql);
+        double end=System.nanoTime();
+        System.out.println((end-start)/1000000000);
 
     }
 }
