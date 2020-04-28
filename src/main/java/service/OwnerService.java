@@ -34,7 +34,7 @@ public class OwnerService {
     public Collection<Owner> getAllData() throws NotFound, IOException, AnotherFound {
         return mapper.readValue(ownerDAO.getAllData().toString(),ref);
     }
-    public Owner getDataByTitle(String id) throws NotFound, IOException {
+    public Owner getDataById(String id) throws NotFound, IOException {
         try {
             return mapper.readValue(ownerDAO.getDataByID(id).toString(), Owner.class);
         }catch (NullPointerException e){
