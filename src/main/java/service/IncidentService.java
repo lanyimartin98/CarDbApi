@@ -27,10 +27,7 @@ public class IncidentService {
         this.mapper=new ObjectMapper();
         this.mapper.registerModule(new JavaTimeModule());
         this.ref = new TypeReference<ArrayList<Incident>>() {
-
-
         };
-
     }
     public Collection<Incident> getAllData() throws NotFound, AnotherFound, IOException {
         return mapper.readValue(incidentDAO.getAllData().toString(),ref);

@@ -3,6 +3,8 @@ package database;
 import java.util.ArrayList;
 
 public class StatementBuilder {
+    //This class is for simplifying SQL statement generation, it is static so easily accessable and useable.
+    //This method creates insert statement
     public static String BuildInsert(String database, ArrayList<Object> c ){
         StringBuilder builder=new StringBuilder();
         builder.append("insert into \"");
@@ -19,6 +21,7 @@ public class StatementBuilder {
         builder.append(");");
         return builder.toString();
     }
+    //This method creates query statement
     public static String BuildQuery(String database){
         StringBuilder builder=new StringBuilder();
         builder.append("select * from ");
@@ -36,6 +39,7 @@ public class StatementBuilder {
         builder.append("\';");
         return builder.toString();
     }
+    //This method creates delete statement
     public static String BuildDelete(String database,String identifier,String id){
         StringBuilder builder=new StringBuilder();
         builder.append("delete from \"");
@@ -47,7 +51,7 @@ public class StatementBuilder {
         builder.append("\';");
         return builder.toString();
     }
-
+    //This method creates update statement
     public static String BuildUpdate(String database, String identifier,String id, ArrayList<String> arr){
         StringBuilder builder=new StringBuilder();
         builder.append("update \"");

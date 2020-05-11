@@ -1,12 +1,11 @@
 package database;
 
-import benchmark.Bench;
 import exceptions.AnotherFound;
 import exceptions.NotFound;
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.sql.*;
 
@@ -15,22 +14,27 @@ public class Connector {
     private Connector() {
     };
     private static Connection con = null;
-    //This method creates the instance of the connection, if it's already open it only
+    private static Logger logger=Logger.getLogger(Connector.class);
+    //This method creates the instance of the connection, if it's already open it returns it.
     public static Connection getConnection() {
         if(con==null) {
             try {
                 con = DriverManager
                         .getConnection("jdbc:postgresql://localhost:5432/CarDatabase",
                                 "postgres", "pw");
+                logger.info("Connection opened.");
                 return con;
-            } catch (Exception e) {
 
+
+            } catch (Exception e) {
+                logger.error("Could not open connection");
             }}
         else{
             return con;
         }
         return null;
     }
+    //Executes an Insert query
     public static void execInsert(String SQL) throws AnotherFound, NotFound {
         con = Connector.getConnection();
         try (
@@ -38,17 +42,20 @@ public class Connector {
                 ResultSet rs = stmt.executeQuery(SQL)) {
         } catch (SQLException ex) {
             if(ex.getSQLState().equals("23505")){
+                logger.error("Another instance found with the same id.");
                 throw new AnotherFound();
-            } } }
+            } } };
+    //Excutes an update query
     public static void execUpdate(String SQL){
         con=Connector.getConnection();
         try (
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery(SQL)) {
         } catch (SQLException ex) {
+            logger.error("SQL Expcetion occured.");
 
-        } }
-
+        } };
+    //Executes a delete query
     public static void execDelete(String SQL) throws AnotherFound, NotFound {
         con = Connector.getConnection();
         try (
@@ -56,9 +63,10 @@ public class Connector {
                 ResultSet rs = stmt.executeQuery(SQL)) {
         } catch (SQLException ex) {
             if(ex.getSQLState().equals("02000")){
-                throw new AnotherFound();
-            } } }
-
+                logger.error("Instance not found with the id.");
+                throw new NotFound();
+            } } };
+        //Executes a regular query
         public static JSONArray execQuery(String SQL) throws NotFound, AnotherFound {
         con=Connector.getConnection();
         JSONArray arr=new JSONArray();
@@ -77,14 +85,15 @@ public class Connector {
                 arr.put(obj);
             }
             if (arr.toString().equals("[]")) {
+                logger.error("No instances found with the parameters.");
                 throw new NotFound();
             } else {
                 return arr;
             }
         } catch (SQLException | JSONException e) {
-            e.printStackTrace();
+            logger.error("SQL expception occured.");
         }
-            throw new NotFound();
+        throw new NotFound();
     }
 
 }

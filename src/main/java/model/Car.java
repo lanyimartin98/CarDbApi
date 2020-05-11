@@ -11,7 +11,6 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Car {
-    //Variables
     private String make;
     private String model;
     private String title;
