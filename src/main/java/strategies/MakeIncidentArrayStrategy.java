@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class MakeIncidentArrayStrategy extends MakeArrayStrategy {
     @Override
-    public ArrayList<Object> MakeArray(Object data) {
+    public ArrayList<Object> MakeAdd(Object data) {
         Incident incident=(Incident) data;
         ArrayList<Object> incidentArr=new ArrayList<>();
         incidentArr.add(incident.getIncident_id());

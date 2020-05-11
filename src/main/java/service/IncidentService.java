@@ -7,7 +7,6 @@ import dao.DAO;
 import dao.IDAO;
 import exceptions.AnotherFound;
 import exceptions.NotFound;
-import model.Car;
 import model.Incident;
 import strategies.MakeArrayStrategy;
 import strategies.MakeIncidentArrayStrategy;
@@ -44,7 +43,7 @@ public class IncidentService {
     }
     //Specifies the add operation for the DAO.
     public void addData(String obj) throws IOException, NotFound, AnotherFound {
-        incidentDAO.addData(as.MakeArray(mapper.readValue(obj,Incident.class)));
+        incidentDAO.addData(as.MakeAdd(mapper.readValue(obj,Incident.class)));
     }
     //Deletes the instance with the given id
     public void deleteByID(String id){

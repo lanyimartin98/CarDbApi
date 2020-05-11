@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class MakeCarArrayStrategy extends MakeArrayStrategy {
     @Override
-    public ArrayList<Object> MakeArray(Object data) {
+    public ArrayList<Object> MakeAdd(Object data) {
         Car addCar=(Car)data;
         ArrayList<Object> car=new ArrayList<>();
         car.add(addCar.getTitle());

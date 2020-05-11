@@ -8,12 +8,9 @@ import dao.IDAO;
 import exceptions.AnotherFound;
 import exceptions.NotFound;
 import model.Car;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import strategies.MakeArrayStrategy;
 import strategies.MakeCarArrayStrategy;
 
-import javax.validation.constraints.Null;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -54,7 +51,7 @@ public class CarService {
     }
     //Specifies the add operation for the DAO.
     public void addData(String obj) throws IOException, NotFound, AnotherFound {
-        carDAO.addData(as.MakeArray(mapper.readValue(obj.toString(),Car.class)));
+        carDAO.addData(as.MakeAdd(mapper.readValue(obj.toString(),Car.class)));
     }
     //Specifies the modify operation for the DAO.
     public void updateCar(String obj) throws IOException {

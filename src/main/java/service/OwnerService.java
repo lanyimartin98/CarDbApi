@@ -7,7 +7,6 @@ import dao.DAO;
 import dao.IDAO;
 import exceptions.AnotherFound;
 import exceptions.NotFound;
-import model.Car;
 import model.Owner;
 import strategies.MakeArrayStrategy;
 import strategies.MakeOwnerArrayStrategy;
@@ -49,6 +48,6 @@ public class OwnerService {
     }
     //Specifies the add operation for the DAO.
     public void addData(String obj) throws IOException, NotFound, AnotherFound {
-        ownerDAO.addData(as.MakeArray(mapper.readValue(obj.toString(),Owner.class)));
+        ownerDAO.addData(as.MakeAdd(mapper.readValue(obj.toString(),Owner.class)));
     }
 }

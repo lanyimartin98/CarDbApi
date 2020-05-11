@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class MakeOwnerArrayStrategy extends MakeArrayStrategy {
     @Override
-    public ArrayList<Object> MakeArray(Object data) {
+    public ArrayList<Object> MakeAdd(Object data) {
         Owner addOwner=(Owner)data;
         ArrayList<Object> owner=new ArrayList<>();
         owner.add(addOwner.getId());
