@@ -100,6 +100,25 @@ public class WebController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/car/modify/{title}")
+    public void modifyCar(@PathVariable String title,@RequestBody String json) throws IOException {
+        carService.updateCar(json);
+        logger.info("Post request was made to modify the car under the title: "+title);
+    }
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/owner/modify/{title}")
+    public void modifyOwner(@PathVariable String id,@RequestBody String json) throws IOException {
+        ownerService.updateOwner(json);
+        logger.info("Post request was made to modify the owner under the id: "+id);
+    }
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/incident/modify/{title}")
+    public void modifyIncident(@PathVariable String id,@RequestBody String json) throws IOException {
+        incidentService.updateIncident(json);
+        logger.info("Post request was made to modify the incident under the id: "+id);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/carmodify/{title}")
     public Car updateCar(@PathVariable String title) throws NotFound, IOException {
         return carService.getDataByTitle(title);
