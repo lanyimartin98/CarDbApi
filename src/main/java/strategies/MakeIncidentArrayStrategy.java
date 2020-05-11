@@ -1,5 +1,6 @@
 package strategies;
 
+import model.Car;
 import model.Incident;
 
 import java.util.ArrayList;
@@ -21,6 +22,9 @@ public class MakeIncidentArrayStrategy extends MakeArrayStrategy {
 
     @Override
     public ArrayList<String> MakeUpdate(Object data) {
-        return null;
+        Incident updateIncident=(Incident)data;
+        ArrayList<String> incident=new ArrayList<>();
+        incident.add("\"outcome\"=\'"+updateIncident.isOutcome()+"\'");
+        return incident;
     }
 }
