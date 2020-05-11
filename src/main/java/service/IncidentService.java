@@ -7,6 +7,7 @@ import dao.DAO;
 import dao.IDAO;
 import exceptions.AnotherFound;
 import exceptions.NotFound;
+import model.Car;
 import model.Incident;
 import strategies.MakeArrayStrategy;
 import strategies.MakeIncidentArrayStrategy;
@@ -48,6 +49,11 @@ public class IncidentService {
     //Deletes the instance with the given id
     public void deleteByID(String id){
         incidentDAO.deleteByID(id);
+    }
+    //Specifies the modify operation for the DAO.
+    public void updateIncident(String obj) throws IOException {
+        Incident inc=mapper.readValue(obj.toString(),Incident.class);
+        incidentDAO.updateData(as.MakeUpdate(inc),String.valueOf(inc.getIncident_id()));
     }
 }
 
