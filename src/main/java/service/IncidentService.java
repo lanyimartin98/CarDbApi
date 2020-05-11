@@ -29,20 +29,24 @@ public class IncidentService {
         this.ref = new TypeReference<ArrayList<Incident>>() {
         };
     }
+    //Returns the content of the "Incidents" table
     public Collection<Incident> getAllData() throws NotFound, AnotherFound, IOException {
         return mapper.readValue(incidentDAO.getAllData().toString(),ref);
     }
+    //Returns the "Incident" instance with the given id
     public Incident getDataByID(String id) throws NotFound, IOException {
         try {
             return mapper.readValue(incidentDAO.getDataByID(id).toString(), Incident.class);
         }catch (NullPointerException e){
-            System.out.println("Got it bro!");
+
         }
         throw new NotFound();
     }
+    //Specifies the add operation for the DAO.
     public void addData(String obj) throws IOException, NotFound, AnotherFound {
         incidentDAO.addData(as.MakeArray(mapper.readValue(obj,Incident.class)));
     }
+    //Deletes the instance with the given id
     public void deleteByID(String id){
         incidentDAO.deleteByID(id);
     }

@@ -21,19 +21,20 @@ public class OwnerService {
     private MakeArrayStrategy as;
     private ObjectMapper mapper;
     private TypeReference ref;
+
     public OwnerService(){
         this.ownerDAO=new DAO("Owners","id");
         this.as=new MakeOwnerArrayStrategy();
         this.mapper = new ObjectMapper();
         this.mapper.registerModule(new JavaTimeModule());
         this.ref = new TypeReference<ArrayList<Owner>>() {
-
-
         };
     }
+    //Returns the content of the "Owners" table
     public Collection<Owner> getAllData() throws NotFound, IOException, AnotherFound {
         return mapper.readValue(ownerDAO.getAllData().toString(),ref);
     }
+    //Returns the "Owner" instance with the given id
     public Owner getDataById(String id) throws NotFound, IOException {
         try {
             return mapper.readValue(ownerDAO.getDataByID(id).toString(), Owner.class);
@@ -42,9 +43,11 @@ public class OwnerService {
         }
         throw new NotFound();
     }
+    //Deletes the instance with the given id
     public void deleteDataByTitle(String id){
         ownerDAO.deleteByID(id);
     }
+    //Specifies the add operation for the DAO.
     public void addData(String obj) throws IOException, NotFound, AnotherFound {
         ownerDAO.addData(as.MakeArray(mapper.readValue(obj.toString(),Owner.class)));
     }
