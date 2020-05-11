@@ -13,6 +13,9 @@ import service.OwnerService;
 import java.io.IOException;
 import java.util.Collection;
 
+//This is the RestHandler which connects the backend with the frontend, it uses Spring WebController and it was also made
+//using Composite design pattern
+
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class WebController {
@@ -55,9 +58,31 @@ public class WebController {
         carService.addData(json);
     }
     @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/owner/add")
+    public void addOwner(@RequestBody String json) throws NotFound, AnotherFound, IOException {
+        ownerService.addData(json);
+    }
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/incident/add")
+    public void addIncident(@RequestBody String json) throws NotFound, AnotherFound, IOException {
+        incidentService.addData(json);
+    }
+    @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping("/car/delete/{id}")
     public void deleteCar(@PathVariable String id){
         carService.deleteDataByTitle(id);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @DeleteMapping("/owner/delete/{id}")
+    public void deleteOwner(@PathVariable String id){
+        ownerService.deleteDataByID(id);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @DeleteMapping("/incident/delete/{id}")
+    public void deleteIncident(@PathVariable String id){
+        incidentService.deleteByID(id);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")

@@ -44,7 +44,7 @@ public class OwnerService {
         throw new NotFound();
     }
     //Deletes the instance with the given id
-    public void deleteDataByTitle(String id){
+    public void deleteDataByID(String id){
         ownerDAO.deleteByID(id);
     }
     //Specifies the add operation for the DAO.
