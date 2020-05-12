@@ -8,58 +8,47 @@ import model.Car;
 import model.enums.inUse;
 import model.enums.usageType;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-class CarServiceTest {
-    static CarService service;
-    Random random;
-    @Test
-    void setup(){
-         service=new CarService();
-         random=new Random();
-    }
+public class CarServiceTest {
+    CarService service;
+    private int obj;
+    private Car car;
 
-
-    @Test
-    void getAllData() throws NotFound, IOException, AnotherFound {
-
-        System.out.println(service.getAllData());
-    }
-
-    @Test
-    void getDataByTitle() throws NotFound, IOException {
+    @Before
+    public void setUp() throws Exception, NotFound, AnotherFound, InvalidData, MilageCanNotBeLowered {
         service=new CarService();
-
-        Throwable exception = assertThrows(NotFound.class, () -> service.getDataByTitle("NNN-107"));
-        assertEquals(null, exception.getMessage());
+        car=new Car("BMW","325i","012345PA","MMM-888", LocalDate.of(1998,10,22),192, inUse.InUse,false, usageType.personal,120000,"smg");
     }
 
-
-    @Test
-    void deleteDataByTitle() {
-        //service=new CarService();
-        //service.deleteDataByTitle("PKJ-888");
-    }
-
-    @Test
-    void addData() throws InvalidData, MilageCanNotBeLowered, AnotherFound, IOException, NotFound {
-        Car car=new Car("BMW","325i","012345PA","PKJ-888", LocalDate.of(1998,10,22),192, inUse.InUse,false, usageType.personal,1200000,"smg");
-        service=new CarService();
+    public void addData() throws AnotherFound, IOException, NotFound {
+        obj=service.getAllData().size();
         service.addData(car.toString());
+        assert(obj<service.getAllData().size());
+    }
 
+
+    public void getDataByTitle() throws NotFound, IOException {
+        assertEquals(service.getDataByTitle("MMM-888"),car);
+
+    }
+
+
+    public void deleteDataByTitle() throws AnotherFound, IOException, NotFound {
+        obj=service.getAllData().size();
+        service.deleteDataByTitle("MMM-888");
+        assert(obj>service.getAllData().size());
     }
     @Test
-    void updateCar() throws InvalidData, MilageCanNotBeLowered, IOException {
-        CarService service=new CarService();
-        Car car=new Car("BMW","325i","012345PA","PKJ-888", LocalDate.of(1998,10,22),192, inUse.InUse,false, usageType.personal,1200000,"run");
-        service.updateCar(car.toString());
-
+    public void UnitTest() throws AnotherFound, IOException, NotFound {
+        addData();
+        getDataByTitle();
+        deleteDataByTitle();
     }
+
 }

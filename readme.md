@@ -17,5 +17,5 @@ Others will be used later on the development.<br>
 **Unit tests:**<br>
 Model tests: All exceptions where tested to ensure that validation works.<br>
 DAO tests: All 5 data manipulations where tested.<br>
-Database test: Database connector and the SQL statement builder tested.<br>
+Database test: Database connector.<br>
 Service test: Services are tested.

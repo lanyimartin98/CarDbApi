@@ -1,26 +1,35 @@
 package database;
 
-import exceptions.AnotherFound;
-import exceptions.NotFound;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
-import java.sql.SQLException;
+import java.sql.Connection;
+import java.util.Collection;
 
-class ConnectorTest {
+import static org.junit.Assert.*;
+
+public class ConnectorTest {
+
+    Connection con;
+    @Before
+    public void setUp() throws Exception {
+        con=Connector.getConnection();
+    }
 
     @Test
-    void getInstance() {
-        Connector.getConnection();
+    public void execInsert() {
 
     }
 
     @Test
-    void getConnection() throws SQLException, NotFound, AnotherFound {
-        double start=System.nanoTime();
-        String sql=StatementBuilder.BuildQuery("Cars");
-        Connector.execQuery(sql);
-        double end=System.nanoTime();
-        System.out.println((end-start)/1000000000);
+    public void execUpdate() {
+    }
 
+    @Test
+    public void execDelete() {
+    }
+
+    @Test
+    public void execQuery() {
     }
 }
