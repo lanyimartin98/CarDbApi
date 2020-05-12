@@ -64,7 +64,7 @@ public class Connector {
         } catch (SQLException ex) {
             if(ex.getSQLState().equals("02000")){
                 logger.error("Instance not found with the id.");
-                throw new NotFound();
+
             } } };
         //Executes a regular query
         public static JSONArray execQuery(String SQL) throws NotFound, AnotherFound {
